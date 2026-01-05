@@ -1,0 +1,15 @@
+.container { max-width: 600px; margin: 2rem auto; font-family: sans-serif; }
+.form-card { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+.input-field { padding: 8px; flex: 1; }
+.card { 
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  margin-bottom: 5px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  border-radius: 4px;
+}
+button { cursor: pointer; padding: 5px 10px; margin-left: 5px; }
+.delete { background-color: #ff4444; color: white; border: none; }
+.cancel { background-color: #ccc; border: none; }

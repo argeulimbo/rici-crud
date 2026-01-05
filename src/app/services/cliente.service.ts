@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, collection, collectionData, addDoc, doc, updateDoc, deleteDoc } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, addDoc, doc, updateDoc, deleteDoc, getDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Cliente } from '../models/cliente';
 
@@ -32,5 +32,12 @@ export class ClienteService {
   deleteCliente(id: string) {
     const docRef = doc(this.firestore, `clientes/${id}`);
     return deleteDoc(docRef);
+  }
+
+  // Cliente por ID
+  async getCliente(id: string): Promise<Cliente> {
+    const docRef = doc(this.firestore, `clientes/${id}`);
+    const docSnap = await getDoc(docRef);
+    return { id: docSnap.id, ...docSnap.data() } as Cliente;
   }
 }

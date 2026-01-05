@@ -1,0 +1,37 @@
+<p>home works!</p>
+
+<div class="container">
+  <h1>Gerenciamento de Clientes (Angular 18)</h1>
+
+  <div class="form-card">
+    <input [(ngModel)]="clienteAtual.nome" placeholder="Nome" class="input-field">
+    <input [(ngModel)]="clienteAtual.email" placeholder="Email" class="input-field">
+    <input [(ngModel)]="clienteAtual.telefone" placeholder="Telefone" class="input-field">
+    
+    <div class="actions">
+      <button (click)="salvar()">
+        {{ editando ? 'Atualizar' : 'Salvar' }}
+      </button>
+      <button *ngIf="editando" (click)="limparForm()" class="cancel">Cancelar</button>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="list">
+    @for (cliente of clientes$ | async; track cliente.id) {
+      <div class="card">
+        <div>
+          <strong>{{ cliente.nome }}</strong> <br>
+          <small>{{ cliente.email }}</small>
+        </div>
+        <div>
+          <button (click)="editar(cliente)">Editar</button>
+          <button (click)="deletar(cliente.id!)" class="delete">X</button>
+        </div>
+      </div>
+    } @empty {
+      <p>Nenhum cliente cadastrado.</p>
+    }
+  </div>
+</div>
