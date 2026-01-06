@@ -1,10 +1,17 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideClientHydration } from '@angular/platform-browser';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+
 import { routes } from './app.routes';
 
 // Importação Firebase
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { provideToastr, ToastrModule } from 'ngx-toastr';
+import { provideNgxMask } from 'ngx-mask';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 // Configuração Firebase
 const firebaseConfig = {
@@ -18,10 +25,22 @@ const firebaseConfig = {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideClientHydration(), 
     provideRouter(routes),
+    provideHttpClient(
+      withInterceptors([
+      ])
+    ),
+    provideAnimations(),
+    provideToastr({
+      timeOut: 4000,
+      closeButton: true,
+      progressBar: true,
+    }),
+    provideNgxMask(),    
     // Inicializar Firebase
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()), provideAnimationsAsync()
   ]
 };
