@@ -6,8 +6,6 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { Title } from '@angular/platform-browser';
-import { AppRoutingModule } from "../../app.routes";
 
 @Component({
   selector: 'app-home',
@@ -18,7 +16,6 @@ import { AppRoutingModule } from "../../app.routes";
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    AppRoutingModule
 ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

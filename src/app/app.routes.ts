@@ -11,7 +11,7 @@ import { ClienteCreateComponent } from './components/cliente/cliente-create/clie
 
 export const routes: Routes = [
     {
-        path: '', component: NavComponent, canActivate: [],
+        path: '', component: NavComponent,
         children: [
             { path: 'home',                     component: HomeComponent          },
             { path: 'clientes',                 component: ClienteListComponent   },

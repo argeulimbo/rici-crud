@@ -25,7 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatProgressBar, MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatRippleModule } from '@angular/material/core';
@@ -36,9 +36,6 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
-// Componentes do projeto
-import { NavComponent } from './components/nav/nav.component';
 
 @Component({
   selector: 'app-root',
@@ -61,7 +58,6 @@ import { NavComponent } from './components/nav/nav.component';
             MatMenuModule,
             MatPaginatorModule,
             MatProgressBarModule,
-            MatProgressBar,
             MatProgressSpinnerModule,
             MatRadioModule,
             MatRippleModule,
@@ -73,8 +69,7 @@ import { NavComponent } from './components/nav/nav.component';
             MatTabsModule,
             MatToolbarModule,
             FormsModule,
-            ReactiveFormsModule,
-            NavComponent
+            ReactiveFormsModule
            ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
