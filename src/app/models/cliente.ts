@@ -5,6 +5,6 @@ export interface Cliente {
     email: string,
     telefone: string,
     dataCriacao: any,
-    observacoes: string,
-    status: 'ativo' | 'inativo';
+    observacoes?: string,
+    status?: 'ativo' | 'inativo';
 }

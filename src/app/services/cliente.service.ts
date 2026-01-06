@@ -3,6 +3,8 @@ import { Firestore, collection, collectionData, addDoc, doc, updateDoc, deleteDo
 import { Observable } from 'rxjs';
 import { Cliente } from '../models/cliente';
 
+import { map } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,9 +15,30 @@ export class ClienteService {
   constructor() { }
 
   // READ
-  getClientes(): Observable<Cliente[]> {
+  /* getClientes(): Observable<Cliente[]> {
     return collectionData(this.clienteCollection, { idField: 'id' }) as Observable<Cliente[]>;
+  } */
+ getClientes(): Observable<Cliente[]> {
+  return collectionData(this.clienteCollection, { idField: 'id'}).pipe(
+    map((clientes: any[]) => 
+    clientes.map(cliente => this.normalizarCliente(cliente))
+    )
+  );
+ }
+
+ private normalizarCliente(cliente: any): Cliente {
+  return {
+    id:               cliente.id                                      ,
+    nome:             cliente.nome         ??                       '',
+    cpf:              cliente.cpf          ??                       '',
+    email:            cliente.email        ??                       '',
+    telefone:         cliente.telefone     ??                       '',
+    status:           cliente.status       ??                  'ativo',
+    observacoes:      cliente.observacoes  ??                       '',
+    dataCriacao:      cliente.dataCriacao  ??  new Date().toISOString()
   }
+ }
+
 
   // CREATE
   addCliente(cliente: Cliente) {
