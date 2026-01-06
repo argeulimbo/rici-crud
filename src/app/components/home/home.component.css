@@ -1,0 +1,118 @@
+/* Container geral com espaçamento */
+.home-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* --- Hero Section (Boas Vindas) --- */
+.welcome-card {
+  padding: 24px;
+  background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+  border-left: 6px solid #3f51b5; /* Cor primária do Angular Material */
+}
+
+.welcome-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.welcome-text h1 {
+  margin-top: 0;
+  color: #333;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.welcome-text p {
+  color: #666;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.hero-image {
+  max-height: 180px; /* Controla o tamanho da imagem para não quebrar o layout */
+  object-fit: contain;
+}
+
+/* --- Dashboard Grid (O Board) --- */
+.dashboard-grid {
+  display: grid;
+  /* Cria colunas responsivas automaticamente */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.stat-card {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+
+/* Efeito ao passar o mouse */
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1) !important; /* Força o sombreamento */
+}
+
+.stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+}
+
+.stat-icon mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+}
+
+/* Cores específicas para os ícones */
+.stat-icon.warn { color: #f44336; background-color: #ffebee; }
+.stat-icon.accent { color: #ffca28; background-color: #fff8e1; }
+.stat-icon.primary { color: #3f51b5; background-color: #e8eaf6; }
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.stat-title {
+  font-size: 0.9rem;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Ajuste para Mobile */
+@media (max-width: 768px) {
+  .welcome-content {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  
+  .welcome-card {
+    border-left: none;
+    border-top: 6px solid #3f51b5;
+  }
+}

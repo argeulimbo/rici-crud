@@ -1,1 +1,31 @@
-<p>home works!</p>
+<div class="home-container">
+  
+  <mat-card class="welcome-card mat-elevation-z4">
+    <div class="welcome-content">
+      <div class="welcome-text">
+        <h1>Bem-vindo(a) ao Rici</h1>
+        <p>
+          Sistema de gerenciamento de clientes desenvolvido em <strong>Angular 18</strong>
+          Gerencie de forma rápida e eficiente.
+        </p>
+        <button mat-raised-button color="primary">Novo Cliente</button>
+      </div>
+      <img src="https://imgur.com/aae5o7F.png" alt="Help Desk Illustration" class="hero-image">
+    </div>
+  </mat-card>
+
+  <div class="dashboard-grid">
+    @for (item of dashboardData; track item.title) {
+      <mat-card class="stat-card mat-elevation-z2">
+        <div class="stat-icon" [class]="item.color">
+          <mat-icon>{{ item.icon }}</mat-icon>
+        </div>
+        <div class="stat-info">
+          <span class="stat-value">{{ item.value }}</span>
+          <span class="stat-title">{{ item.title }}</span>
+        </div>
+      </mat-card>
+    }
+  </div>
+
+</div>

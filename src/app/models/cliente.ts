@@ -4,5 +4,7 @@ export interface Cliente {
     cpf: string,
     email: string,
     telefone: string,
-    dataCriacao: any;
+    dataCriacao: any,
+    observacoes: string,
+    status: 'ativo' | 'inativo';
 }

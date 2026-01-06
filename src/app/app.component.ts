@@ -91,7 +91,9 @@ export class AppComponent {
     cpf: '',
     email: '',
     telefone: '',
-    dataCriacao: ''
+    dataCriacao: '',
+    observacoes: '',
+    status: 'ativo'
    };
    editando = false; // Controle de estado - Create or Update
 
@@ -123,7 +125,9 @@ export class AppComponent {
       cpf: '',
       email: '',
       telefone: '',
-      dataCriacao: ''
+      dataCriacao: '',
+      observacoes: '',
+      status: 'ativo'
     }
    }
 
