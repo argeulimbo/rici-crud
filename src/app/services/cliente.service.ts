@@ -15,9 +15,6 @@ export class ClienteService {
   constructor() { }
 
   // READ
-  /* getClientes(): Observable<Cliente[]> {
-    return collectionData(this.clienteCollection, { idField: 'id' }) as Observable<Cliente[]>;
-  } */
  getClientes(): Observable<Cliente[]> {
   return collectionData(this.clienteCollection, { idField: 'id'}).pipe(
     map((clientes: any[]) => 
@@ -47,8 +44,9 @@ export class ClienteService {
 
   // UPDATE
   updateCliente(cliente: Cliente) {
-    const docRef = doc(this.firestore, `clientes/${cliente.id}`);
-    return updateDoc(docRef, { ...cliente });
+    const { id, ...dados } = cliente;
+    const docRef = doc(this.firestore, `clientes/${id}`);
+    return updateDoc(docRef, dados);
   }
 
   // DELETE
@@ -61,6 +59,9 @@ export class ClienteService {
   async getCliente(id: string): Promise<Cliente> {
     const docRef = doc(this.firestore, `clientes/${id}`);
     const docSnap = await getDoc(docRef);
-    return { id: docSnap.id, ...docSnap.data() } as Cliente;
+    return this.normalizarCliente({
+      id: docSnap.id,
+      ...docSnap.data()
+    });
   }
 }
