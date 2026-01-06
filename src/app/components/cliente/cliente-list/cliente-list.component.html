@@ -1,1 +1,93 @@
-<p>cliente-list works!</p>
+<head>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<div class="container">
+
+  <h1 class="mat-elevation-z12">Clientes</h1>
+
+  <section>
+    <div class="class-button">
+      <!-- rota filha: clientes/create -->
+      <button
+        routerLink="create"
+        mat-raised-button
+        color="primary"
+        class="mat-elevation-z12">
+        Novo
+      </button>
+
+      <button
+        mat-raised-button
+        color="warn"
+        class="mat-elevation-z12"
+        (click)="excluirSelecionados()">
+        Excluir
+      </button>
+    </div>
+  </section>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Filtro</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Nome, CPF ou Email">
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Nome -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let element">{{ element.nome }}</td>
+      </ng-container>
+
+      <!-- CPF -->
+      <ng-container matColumnDef="cpf">
+        <th mat-header-cell *matHeaderCellDef>CPF</th>
+        <td mat-cell *matCellDef="let element">{{ element.cpf }}</td>
+      </ng-container>
+
+      <!-- Email -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>E-mail</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <!-- Telefone -->
+      <ng-container matColumnDef="telefone">
+        <th mat-header-cell *matHeaderCellDef>Telefone</th>
+        <td mat-cell *matCellDef="let element">{{ element.telefone }}</td>
+      </ng-container>
+
+      <!-- Status -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      </ng-container>    
+      
+      <!-- Ações -->
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [routerLink]="['update', element.id]">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="warn" (click)="excluir(element.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons>
+    </mat-paginator>
+  </div>
+
+</div>

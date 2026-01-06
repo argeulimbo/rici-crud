@@ -1,1 +1,53 @@
-<p>cliente-create works!</p>
+<div class="container mat-elevation-z8">
+    <form class="form">
+        <h1 class="fullWidth">Cadastro de Cliente</h1>
+        <img src="https://i.imgur.com/HhPUEAn.png" alt="Cliente-Create">
+        
+            <mat-form-field appearance="fill" class="fullWidth">
+              <mat-label>Nome</mat-label>
+              <input 
+              [(ngModel)]="cliente.nome"
+              name="nome"
+              [formControl]="nome"
+              required
+              matInput placeholder="digite o nome completo...">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="fullWidth">
+                <mat-label>CPF</mat-label>
+                <input
+                [(ngModel)]="cliente.cpf"
+                name="cpf"
+                [formControl]="cpf" 
+                required
+                mask="000.000.000-00"
+                matInput placeholder="Ex.: 999.999.999-99">
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="fullWidth">
+                <mat-label>E-mail</mat-label>
+                <input
+                [(ngModel)]="cliente.email"
+                name="email"
+                [formControl]="email"
+                required                
+                matInput placeholder="digite um e-mail válido...">
+              </mat-form-field>
+             
+             <mat-form-field appearance="fill" class="fullWidth">
+               <mat-label>Telefone</mat-label>
+               <input 
+               [(ngModel)]="cliente.telefone"
+               name="telefone"
+               [formControl]="telefone"
+               required
+               matInput placeholder="Ex: 31 973051592...">
+             </mat-form-field>
+
+              <div class="findButton">
+                <button type="button" (click)="create()" [disabled]="!validaCampos()" mat-flat-button color="primary">Cadastrar</button>                
+                <button mat-stroked-button (click)="cancelar()" color="primary">Cancelar</button>
+              </div>
+    </form>
+    <p>Desenvolvido por Argeu Souza</p>
+</div>

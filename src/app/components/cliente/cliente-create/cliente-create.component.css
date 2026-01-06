@@ -1,0 +1,49 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.6rem;
+    border-radius: 1rem;
+}
+
+p {
+    text-align: center;
+    margin-top: 1rem;
+    opacity: 0.6;
+}
+
+img { 
+    height: 10rem;
+    width: 10rem;
+    margin: auto;
+    display: block;
+    
+}
+
+.container { 
+    width: 40rem;
+    margin: auto;
+    padding: 0.5rem 1.2rem 1rem 1.2rem;
+    border-radius: 0.6rem;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.form {
+    border-radius: 2rem;
+}
+
+.section { 
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.findButton {
+    display: flex;
+    justify-content: space-around;
+}
