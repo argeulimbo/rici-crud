@@ -54,7 +54,9 @@ export class ClienteCreateComponent {
   ) { }
 
   cancelar() {
-    this.router.navigate(['/clientes']);
+    this.router.navigate(['/clientes'], {
+      queryParamsHandling: ''
+    });
   }
 
   validaCampos(): boolean { 
