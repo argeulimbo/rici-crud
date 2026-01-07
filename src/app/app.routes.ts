@@ -7,6 +7,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ClienteListComponent } from './components/cliente/cliente-list/cliente-list.component';
 import { ClienteCreateComponent } from './components/cliente/cliente-create/cliente-create.component';
+import { ClienteUpdateComponent } from './components/cliente/cliente-update/cliente-update.component';
 
 
 export const routes: Routes = [
@@ -15,7 +16,8 @@ export const routes: Routes = [
         children: [
             { path: 'home',                     component: HomeComponent          },
             { path: 'clientes',                 component: ClienteListComponent   },
-            { path: 'clientes/create',          component: ClienteCreateComponent }
+            { path: 'clientes/create',          component: ClienteCreateComponent },
+            { path: 'clientes/create/:id',      component: ClienteUpdateComponent }
         ]
     }
 ]
