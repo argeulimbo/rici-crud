@@ -1,6 +1,6 @@
 * {
     font-family: 'Roboto', sans-serif;
-}
+}   
 
 section { 
     display: flex;
@@ -11,10 +11,15 @@ table {
 }
 
 h1 { 
-    font-size: 2rem;
+    font-size: 2.2rem;
     text-align: center;
-    font-weight: 300;
+    font-weight: 400;
     border-radius: 1rem;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #f5f5f5, #fafafa);
+    border-radius: 12px;
+    color: #424242;
+    padding: 1rem;
     opacity: 0.8;
 }
 
@@ -36,18 +41,48 @@ mat-form-field {
     font-size: 14px;
     width: 100%;
     opacity: 0.5;
+    margin-bottom: 1.5rem;
+}
+
+th.mat-header-cell {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  color: #616161;
+}
+
+td.mat-cell {
+  padding: 12px 16px;
+}
+
+tr.mat-row:hover {
+  background-color: #f9f9f9;
 }
 
 .container {
-    width: 85%;
-    margin: auto;
+    width: 90%;
+    margin: 2rem auto;
+    max-width: 1200px;
 }
 
 .class-button {
     display: flex;
     width: 100%;
     margin: 8px 8px 8px 0;
+    margin-bottom: 1rem;
     justify-content: flex-end;
+}
+
+.class-button button {
+  min-width: 120px;
+  height: 40px;
+  font-weight: 500;
+  border-radius: 20px;
+}
+
+.mat-elevation-z4 {
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #ffffff;
 }
 
 .edit {
@@ -56,4 +91,22 @@ mat-form-field {
 
 .delete {
     color: gray;
+}
+
+.status {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status.ativo {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status.inativo {
+  background-color: #ffebee;
+  color: #c62828;
 }

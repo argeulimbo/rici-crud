@@ -43,7 +43,7 @@ export class ClienteUpdateComponent {
       email:        '',
       telefone:        '',
       dataCriacao:  '',
-      status: 'ativo'
+      status:   'ativo'
     }
   
     nome: FormControl = new FormControl(null, Validators.minLength(3));
