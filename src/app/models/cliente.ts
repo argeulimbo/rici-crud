@@ -6,5 +6,5 @@ export interface Cliente {
     telefone: string,
     dataCriacao: any,
     observacoes?: string,
-    status?: 'ativo' | 'inativo';
+    status?: 'Ativo' | 'Inativo';
 }

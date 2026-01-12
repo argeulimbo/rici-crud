@@ -30,7 +30,7 @@ export class ClienteService {
     cpf:              cliente.cpf          ??                       '',
     email:            cliente.email        ??                       '',
     telefone:         cliente.telefone     ??                       '',
-    status:           cliente.status       ??                  'ativo',
+    status:           cliente.status       ??                  'Ativo',
     observacoes:      cliente.observacoes  ??                       '',
     dataCriacao:      cliente.dataCriacao  ??  new Date().toISOString()
   }
@@ -64,4 +64,5 @@ export class ClienteService {
       ...docSnap.data()
     });
   }
+
 }

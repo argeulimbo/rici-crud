@@ -1,6 +1,6 @@
 <div class="container mat-elevation-z8">
     <form class="form">
-        <h1 class="fullWidth">Atualizar</h1>
+        <h1 class="fullWidth">Atualizar Cadastro</h1>
         <img src="https://i.imgur.com/HhPUEAn.png" alt="Cliente-Update">
         
             <mat-form-field appearance="fill" class="fullWidth">
@@ -52,17 +52,18 @@
                 disabled>
               </mat-form-field>
 
-              <button
+        
+
+              <div class="findButton">
+                <button
                 mat-stroked-button 
                 color="warn"
                 type="button"
                 (click)="toggleStatus()">
-                {{ cliente.status === 'ativo' ? 'Inativar Cliente' : 'Ativar Cliente' }}
-              </button>              
-
-              <div class="findButton">
-                <button type="button" [disabled]="!validaCampos()" mat-flat-button color="primary">Atualizar</button>                
-                <button mat-stroked-button color="primary">Cancelar</button>
+                {{ cliente.status === 'Ativo' ? 'Inativar Cliente' : 'Ativar Cliente' }}
+                </button>      
+                <button mat-flat-button    type="button" color="primary" (click)="update()" [disabled]="!validaCampos()" >Atualizar</button>                
+                <button mat-stroked-button type="button" color="primary" (click)="cancelar()"                            >Cancelar</button>
               </div>
     </form>
     <p>Desenvolvido por Argeu Souza</p>

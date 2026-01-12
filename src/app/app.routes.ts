@@ -17,7 +17,7 @@ export const routes: Routes = [
             { path: 'home',                     component: HomeComponent          },
             { path: 'clientes',                 component: ClienteListComponent   },
             { path: 'clientes/create',          component: ClienteCreateComponent },
-            { path: 'clientes/create/:id',      component: ClienteUpdateComponent }
+            { path: 'clientes/update/:id',      component: ClienteUpdateComponent }
         ]
     }
 ]

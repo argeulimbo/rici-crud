@@ -88,7 +88,7 @@ export class AppComponent {
     telefone: '',
     dataCriacao: '',
     observacoes: '',
-    status: 'ativo'
+    status: 'Ativo'
    };
    editando = false; // Controle de estado - Create or Update
 
@@ -122,7 +122,7 @@ export class AppComponent {
       telefone: '',
       dataCriacao: '',
       observacoes: '',
-      status: 'ativo'
+      status: 'Ativo'
     }
    }
 

@@ -37,13 +37,13 @@ import { ToastrService } from 'ngx-toastr';
 export class ClienteUpdateComponent {
 
   cliente: Cliente = {
-      id:           '',
-      nome:         '',
-      cpf:          '',
-      email:        '',
+      id:              '',
+      nome:            '',
+      cpf:             '',
+      email:           '',
       telefone:        '',
-      dataCriacao:  '',
-      status:   'ativo'
+      dataCriacao:     '',
+      status:      'Ativo'
     }
   
     nome: FormControl = new FormControl(null, Validators.minLength(3));
@@ -62,9 +62,33 @@ export class ClienteUpdateComponent {
       this.router.navigate(['/clientes']);
     }
 
-    ngOnInit(): void {
-      this.cliente.id = this.route.snapshot.paramMap.get('id')!;
+    async ngOnInit(): Promise<void> {
+      const id = this.route.snapshot.paramMap.get('id');
+
+      if (!id) {
+        this.toast.error('ID do cliente não informado.');
+        this.router.navigate(['/clientes']);
+        return;
+      }
+
+      try {
+        this.cliente = await this.service.getCliente(id);
+        this.nome.setValue(this.cliente.nome);
+        this.cpf.setValue(this.cliente.cpf);
+        this.email.setValue(this.cliente.email);
+        this.telefone.setValue(this.cliente.telefone);
+        this.status.setValue(this.cliente.status);
+
+      } catch (error) {
+        this.toast.error('Erro ao carregar cliente.');
+        this.router.navigate(['/clientes']);
+      }
+
     }
+
+    findById(): void {
+      this.service.getCliente(this.cliente.id)
+    } 
   
     validaCampos(): boolean { 
       return this.nome.valid 
@@ -75,13 +99,39 @@ export class ClienteUpdateComponent {
     }
 
     toggleStatus(): void { 
-      if (this.cliente.status === 'ativo') {
-        this.cliente.status = 'inativo';
+      if (this.cliente.status === 'Ativo') {
+        this.cliente.status = 'Inativo';
       } else {
-        this.cliente.status = 'ativo';
+        this.cliente.status = 'Ativo';
       }
+      this.toast.success('Status alterado com sucesso!', 'Status Cliente');
     }
 
+    async update(): Promise<void> {
+      if (!this.cliente.id) {
+        this.toast.error('ID do cliente inválido!');
+        return;
+      }
 
-  
+      if (!this.validaCampos()) {
+        this.toast.error('Preenche todos os campos corretamente!');
+        return;
+      }
+
+        this.cliente.nome = this.nome.value!;
+        this.cliente.cpf = this.cpf.value!;
+        this.cliente.email = this.email.value!;
+        this.cliente.telefone = this.telefone.value!;
+        this.cliente.status = this.status.value!;
+
+        try {
+          await this.service.updateCliente(this.cliente);
+          this.toast.success('Cliente atualizado com sucesso', 'Atualização');
+          this.router.navigate(['/clientes']);
+        } catch (error) {
+          this.toast.error('Erro ao atualizar o cliente.');
+          console.log(error);
+        }
+    }
+
 }

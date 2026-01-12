@@ -3,10 +3,8 @@
 </head>
 
 <div class="container">
-
   <h1 class="mat-elevation-z4">Clientes</h1>
-
-  <section>
+  <section class="section-acoes">
     <div class="class-button">
       <!-- rota filha: clientes/create -->
       <button
@@ -16,25 +14,13 @@
         class="mat-elevation-z12">
         Novo
       </button>
-
-      <!--
-      <button
-        mat-raised-button
-        color="warn"
-        class="mat-elevation-z12"
-        (click)="excluirSelecionados()">
-        Excluir
-      </button>
-      -->
     </div>
   </section>
-
   <mat-form-field appearance="outline">
     <mat-label>Buscar cliente</mat-label>
     <mat-icon matPrefix>search</mat-icon>
     <input matInput (keyup)="applyFilter($event)" placeholder="Nome, CPF ou E-mail">
   </mat-form-field>
-
   <div class="mat-elevation-z4">
     <table mat-table [dataSource]="dataSource">
 
@@ -70,16 +56,15 @@
            {{ element.status }}
           </span>
         </td>
-      </ng-container>    
-      
+      </ng-container>        
+
       <!-- Ações -->
       <ng-container matColumnDef="acoes">
-        <th mat-header-cell *matHeaderCellDef>Ações</th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button [routerLink]="['update', element.id]">
+        <th mat-header-cell *matHeaderCellDef class="acoes-header">Ações</th>
+        <td mat-cell *matCellDef="let element" class="acoes-cell">
+          <button mat-icon-button color="primary" [routerLink]="['update', element.id]">
             <mat-icon>edit</mat-icon>
           </button>
-
           <button mat-icon-button color="warn" (click)="excluir(element.id)">
             <mat-icon>delete</mat-icon>
           </button>
@@ -88,13 +73,10 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
     </table>
-
     <mat-paginator
       [pageSizeOptions]="[5, 10, 20]"
       showFirstLastButtons>
     </mat-paginator>
   </div>
-
 </div>
