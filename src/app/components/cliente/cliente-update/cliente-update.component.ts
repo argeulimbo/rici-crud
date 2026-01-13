@@ -108,13 +108,13 @@ export class ClienteUpdateComponent {
     }
 
     async update(): Promise<void> {
-      if (!this.cliente.id) {
+      if (this.cliente.id) {
         this.toast.error('ID do cliente inválido!');
         return;
       }
 
-      if (!this.validaCampos()) {
-        this.toast.error('Preenche todos os campos corretamente!');
+      if (this.validaCampos()) {
+          this.toast.error('Preenche todos os campos corretamente!');
         return;
       }
 
