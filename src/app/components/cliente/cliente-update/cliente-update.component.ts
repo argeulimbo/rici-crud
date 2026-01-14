@@ -28,7 +28,6 @@ import { ToastrService } from 'ngx-toastr';
     MatButtonModule,
     ReactiveFormsModule,
     NgxMaskDirective,
-    RouterLink
   ],
   templateUrl: './cliente-update.component.html',
   styleUrl: './cliente-update.component.css'
